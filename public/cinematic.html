@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Francis Albores — Creative Software Engineer in Davao City, Philippines" />
+  <title>Francis Albores | Software Engineer</title>
+
+  <!-- Typography: Syne (display) + Space Grotesk (body) + JetBrains Mono (accent) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cinematic: { black: "#000000", white: "#ffffff" },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom cinematic styles -->
+  <link rel="stylesheet" href="/css/cinematic.css" />
+</head>
+
+<body class="text-white antialiased">
+
+  <!-- ========================================================================
+       BACKGROUND VIDEO — fixed, fullscreen, behind everything
+       Replace src with your own video (recommended: 48s+, 1920×1080).
+       ======================================================================== -->
+  <video
+    id="bg-video"
+    playsinline
+    preload="auto"
+    poster=""
+  >
+  <!-- Demo fallback — swap for /videos/background.mp4 when you have your clip -->
+    <source
+      src="https://cdn.coverr.co/videos/coverr-abstract-digital-lines-1578/1080p.mp4"
+      type="video/mp4"
+    />
+    <source src="/assets/background-video.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Ambient background music — loops independently of video timeline -->
+  <audio
+    id="bg-audio"
+    src="/assets/audio-fma.mp4"
+    preload="auto"
+    loop
+    autoplay
+    playsinline
+  ></audio>
+
+  <!-- Audio mute toggle — sound on by default -->
+  <button
+    id="btn-audio"
+    class="btn-audio"
+    type="button"
+    aria-label="Mute sound"
+    aria-pressed="false"
+    title="Mute"
+  >
+    <span class="btn-audio-ring" aria-hidden="true"></span>
+    <svg class="icon-audio-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+    <svg class="icon-audio-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+
+  <!-- Black overlay — opacity controlled by JavaScript -->
+  <div id="overlay" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       SCROLLABLE CONTENT SECTIONS
+       ======================================================================== -->
+  <main id="content">
+
+    <!-- ── Section 1: Hero / Intro ───────────────────────────────────────── -->
+    <section id="section-hero" class="section">
+      <p class="hero-greeting mb-4" aria-label="Hello World">
+        <span class="hero-phrase" data-text="Hello World"></span>
+      </p>
+      <h1 class="hero-name mb-6" aria-label="Francis Albores">
+        <span class="hero-phrase" data-text="Francis Albores"></span>
+      </h1>
+      <p class="hero-tagline is-awaiting">
+        Creative <strong>Software Engineer</strong> — Davao City, Philippines
+      </p>
+      <button id="btn-next" class="btn-next is-awaiting" type="button">Next</button>
+    </section>
+
+    <!-- ── Section 2: Skillset (video paused at 0:07) ────────────────────── -->
+    <section id="section-skillset" class="section">
+      <h2 class="section-title">I'm proficient with different skillset:</h2>
+
+      <div class="flex flex-col gap-3 mb-2">
+        <p class="skill-line">Backend /</p>
+        <p class="skill-line">Front End /</p>
+        <p class="skill-line">Fullstack /</p>
+        <p class="skill-line">Data Engineering</p>
+      </div>
+
+      <div class="tech-grid">
+        <!-- JS -->
+        <div class="tech-logo" title="JavaScript">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect width="24" height="24" rx="4" fill="#F7DF1E"/>
+            <text x="12" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="#000">JS</text>
+          </svg>
+          <span>JS</span>
+        </div>
+        <!-- TS -->
+        <div class="tech-logo" title="TypeScript">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect width="24" height="24" rx="4" fill="#3178C6"/>
+            <text x="12" y="16" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">TS</text>
+          </svg>
+          <span>TS</span>
+        </div>
+        <!-- React -->
+        <div class="tech-logo" title="React">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="2" fill="#61DAFB"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1" fill="none"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1" fill="none" transform="rotate(60 12 12)"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1" fill="none" transform="rotate(120 12 12)"/>
+          </svg>
+          <span>React</span>
+        </div>
+        <!-- PHP -->
+        <div class="tech-logo" title="PHP">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <ellipse cx="12" cy="12" rx="11" ry="6" fill="#777BB4"/>
+            <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="700" fill="#fff">PHP</text>
+          </svg>
+          <span>PHP</span>
+        </div>
+        <!-- Laravel -->
+        <div class="tech-logo" title="Laravel">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 18 L12 4 L20 18 Z" fill="#FF2D20" opacity="0.9"/>
+            <text x="12" y="17" text-anchor="middle" font-size="5" font-weight="700" fill="#fff">LV</text>
+          </svg>
+          <span>Laravel</span>
+        </div>
+        <!-- HTML/CSS -->
+        <div class="tech-logo" title="HTML / CSS">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 2 L20 2 L18.5 20 L12 22 L5.5 20 Z" fill="#E44D26"/>
+            <text x="12" y="14" text-anchor="middle" font-size="5" font-weight="700" fill="#fff">HTML</text>
+          </svg>
+          <span>HTML/CSS</span>
+        </div>
+        <!-- Tailwind -->
+        <div class="tech-logo" title="Tailwind CSS">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 6 C8 6 6 10 4 10 C2 10 2 6 6 4 C10 2 12 6 12 6 Z M20 10 C16 10 14 14 12 14 C10 14 10 10 14 8 C18 6 20 10 20 10 Z M12 18 C8 18 6 22 4 22 C2 22 2 18 6 16 C10 14 12 18 12 18 Z" fill="#38BDF8"/>
+          </svg>
+          <span>Tailwind</span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn-advance scroll-hint is-hidden"
+        data-segment="SKILLSET"
+        data-target="section-clients"
+        aria-label="Continue to clients"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- ── Section 3: Clients & Geography (video paused at 0:19) ─────────── -->
+    <section id="section-clients" class="section">
+      <h2 class="section-title">
+        I've worked with multiple clients from different parts of the world
+      </h2>
+
+      <div class="country-grid">
+        <div class="country-pill"><span class="flag">🇵🇭</span> Philippines</div>
+        <div class="country-pill"><span class="flag">🇺🇸</span> USA</div>
+        <div class="country-pill"><span class="flag">🇦🇺</span> Australia</div>
+        <div class="country-pill"><span class="flag">🇯🇵</span> Japan</div>
+        <div class="country-pill"><span class="flag">🇸🇬</span> Singapore</div>
+        <div class="country-pill"><span class="flag">🇮🇱</span> Israel</div>
+        <div class="country-pill"><span class="flag">🇩🇪</span> Germany</div>
+        <div class="country-pill"><span class="flag">🇵🇬</span> Papua New Guinea</div>
+      </div>
+
+      <button
+        type="button"
+        class="btn-advance scroll-hint is-hidden"
+        data-segment="CLIENTS"
+        data-target="section-industries"
+        aria-label="Continue to industries"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- ── Section 4: Industries (video paused at 0:44) ──────────────────── -->
+    <section id="section-industries" class="section">
+      <h2 class="section-title">I've worked on different industries</h2>
+
+      <div class="industry-grid">
+        <div class="industry-card">
+          <span class="icon">🏥</span>
+          <span class="label">Health</span>
+        </div>
+        <div class="industry-card">
+          <span class="icon">🚗</span>
+          <span class="label">Car Brands</span>
+        </div>
+        <div class="industry-card">
+          <span class="icon">🍽️</span>
+          <span class="label">Food Industry</span>
+        </div>
+        <div class="industry-card">
+          <span class="icon">🎓</span>
+          <span class="label">School</span>
+        </div>
+        <div class="industry-card">
+          <span class="icon">💳</span>
+          <span class="label">Fintech</span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn-advance scroll-hint is-hidden"
+        data-segment="INDUSTRIES"
+        data-target="section-outro"
+        aria-label="Continue to outro"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- ── Section 5: Outro / CTA (video ends at 0:48) ───────────────────── -->
+    <section id="section-outro" class="section">
+      <h2 class="outro-cta">Hire me</h2>
+      <div class="outro-links">
+        <a class="outro-link" href="https://calendly.com/mrthemetribe/30min" target="_blank" rel="noopener noreferrer">
+          Calendly
+        </a>
+        <a class="outro-link" href="mailto:mrthemetribe@gmail.com">
+          Email
+        </a>
+        <a class="outro-link" href="https://www.linkedin.com/in/francisalbores/" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </div>
+      <a id="btn-restart" class="btn-restart is-hidden" href="">Back to Top</a>
+    </section>
+
+  </main>
+
+  <!-- GSAP (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Portfolio interaction logic -->
+  <script src="/js/cinematic.js"></script>
+
+</body>
+</html>
