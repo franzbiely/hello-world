@@ -35,7 +35,7 @@
     ".skill-line",
     ".tech-logo",
     ".country-pill",
-    ".industry-card",
+    ".portfolio-card",
     ".outro-cta",
     ".outro-link",
     "#btn-next",

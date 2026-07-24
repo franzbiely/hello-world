@@ -212,7 +212,7 @@
         class="btn-advance scroll-hint is-hidden"
         data-segment="CLIENTS"
         data-target="section-industries"
-        aria-label="Continue to industries"
+        aria-label="Continue to portfolio"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M12 5v14M5 12l7 7 7-7"/>
@@ -220,31 +220,50 @@
       </button>
     </section>
 
-    <!-- ── Section 4: Industries (video paused at 0:44) ──────────────────── -->
+    <!-- ── Section 4: Selected work (video paused at 0:44) ───────────────── -->
     <section id="section-industries" class="section">
-      <h2 class="section-title">I've worked on different industries</h2>
+      <h2 class="section-title">Featured Projects</h2>
 
-      <div class="industry-grid">
-        <div class="industry-card">
-          <span class="icon">🏥</span>
-          <span class="label">Health</span>
-        </div>
-        <div class="industry-card">
-          <span class="icon">🚗</span>
-          <span class="label">Car Brands</span>
-        </div>
-        <div class="industry-card">
-          <span class="icon">🍽️</span>
-          <span class="label">Food Industry</span>
-        </div>
-        <div class="industry-card">
-          <span class="icon">🎓</span>
-          <span class="label">School</span>
-        </div>
-        <div class="industry-card">
-          <span class="icon">💳</span>
-          <span class="label">Fintech</span>
-        </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-card" href="https://music-conductor-simulator.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/demo-1.png" alt="Music Conductor Simulator interface" />
+          <span class="portfolio-card__index">01</span>
+          <span class="portfolio-card__content">
+            <span class="portfolio-card__title">Music Conductor Simulator</span>
+            <span class="portfolio-card__description">AI-powered gesture conducting using hand tracking and the Web Audio API.</span>
+            <span class="portfolio-card__link">View live project <span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
+
+        <a class="portfolio-card" href="https://sys.ryoriapp.com/" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/demo-2.png" alt="QR Code Ordering System administrator interface" />
+          <span class="portfolio-card__index">02</span>
+          <span class="portfolio-card__content">
+            <span class="portfolio-card__title">QR Code Ordering System</span>
+            <span class="portfolio-card__description">Mobile, customer, and admin apps for QR-powered restaurant operations.</span>
+            <span class="portfolio-card__link">View live project <span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
+
+        <a class="portfolio-card" href="https://stockpriceapp.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/demo-3.png" alt="Live Stocks Price Checker interface" />
+          <span class="portfolio-card__index">03</span>
+          <span class="portfolio-card__content">
+            <span class="portfolio-card__title">Live Stocks Price Checker</span>
+            <span class="portfolio-card__description">Real-time stock updates powered by the Finnhub API.</span>
+            <span class="portfolio-card__link">View live project <span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
+
+        <a class="portfolio-card" href="https://ajaia-gamma.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/demo-4.png" alt="Version Control Document Editor interface" />
+          <span class="portfolio-card__index">04</span>
+          <span class="portfolio-card__content">
+            <span class="portfolio-card__title">Version Control Document Editor</span>
+            <span class="portfolio-card__description">Collaborative PDF editing, sharing, and real-time user change tracking.</span>
+            <span class="portfolio-card__link">View live project <span aria-hidden="true">↗</span></span>
+          </span>
+        </a>
       </div>
 
       <button

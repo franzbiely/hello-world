@@ -474,42 +474,163 @@ body.scroll-locked {
   line-height: 1;
 }
 
-/* Industry cards */
-.industry-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  max-width: 52rem;
-  margin-top: 1rem;
+/* Selected work — cinematic 2 × 2 project grid */
+#section-industries {
+  padding-top: 3rem;
+  padding-bottom: 6rem;
 }
 
-.industry-card {
+#section-industries .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  width: min(100%, 64rem);
+}
+
+.portfolio-card {
+  position: relative;
+  display: block;
+  height: clamp(10rem, 24vh, 15rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #090b12;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
   opacity: 0;
-  width: 8.5rem;
-  padding: 1.5rem 1rem;
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(8px);
+  isolation: isolate;
+}
+
+.portfolio-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(4, 6, 12, 0.08) 15%, rgba(4, 6, 12, 0.92) 100%),
+    linear-gradient(90deg, rgba(4, 6, 12, 0.35), transparent 65%);
+  transition: background 0.45s ease;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.75) brightness(0.72);
+  transform: scale(1.015);
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s ease;
+}
+
+.portfolio-card__index {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.9rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.portfolio-card__content {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1rem;
+  left: 1.1rem;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: flex-start;
 }
 
-.industry-card .icon {
-  font-size: 2rem;
-  line-height: 1;
+.portfolio-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.1;
 }
 
-.industry-card .label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+.portfolio-card__description {
+  max-width: 30rem;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: max-height 0.45s ease, margin 0.45s ease, opacity 0.35s ease, transform 0.45s ease;
+}
+
+.portfolio-card__link {
+  margin-top: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateY(0.35rem);
+  transition: color 0.3s ease, transform 0.45s ease;
+}
+
+.portfolio-card:hover,
+.portfolio-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.portfolio-card:hover::after,
+.portfolio-card:focus-visible::after {
+  background: linear-gradient(180deg, rgba(4, 6, 12, 0.12), rgba(4, 6, 12, 0.96));
+}
+
+.portfolio-card:hover img,
+.portfolio-card:focus-visible img {
+  filter: saturate(1) brightness(0.58);
+  transform: scale(1.07);
+}
+
+.portfolio-card:hover .portfolio-card__description,
+.portfolio-card:focus-visible .portfolio-card__description {
+  max-height: 4rem;
+  margin-top: 0.5rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-card:hover .portfolio-card__link,
+.portfolio-card:focus-visible .portfolio-card__link {
+  color: #fff;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  #section-industries {
+    padding-inline: 1rem;
+  }
+
+  .portfolio-grid {
+    gap: 0.6rem;
+  }
+
+  .portfolio-card {
+    height: clamp(8.5rem, 20vh, 11rem);
+  }
+
+  .portfolio-card__content {
+    right: 0.75rem;
+    bottom: 0.7rem;
+    left: 0.75rem;
+  }
+
+  .portfolio-card__description {
+    display: none;
+  }
 }
 
 /* Outro CTA */
